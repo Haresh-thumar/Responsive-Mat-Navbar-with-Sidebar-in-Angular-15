@@ -1,0 +1,76 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.example-container {
+    width: auto;
+    height: 100vh;
+    margin: 10px;
+}
+
+.side-bar {
+    // width: 250px;
+}
+
+p {
+    padding: 20px;
+}
+
+.right-side-bar {
+    width: 200px;
+}
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+    color: rgba(0, 0, 0, 0.26);
+}
+
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light {
+    color: rgba(255, 255, 255, 1);
+}
+
+.material-icons.md-light.md-inactive {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+// .mdc-list-item--with-leading-icon .mdc-list-item__start {
+//     margin-right: 0 !important;
+// }
+
+// .mdc-list-item--with-leading-icon.mdc-list-item {
+//     padding-left: 0;
+// }
+
+// .mdc-list-item__primary-text {
+//     margin: 0 10px;
+// }
+
+// @media screen and (max-width: 768px) {
+//     .side-bar-text {
+//         display: none !important;
+//     }
+// }
