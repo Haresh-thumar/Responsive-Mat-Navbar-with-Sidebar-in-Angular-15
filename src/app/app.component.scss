@@ -1,76 +1,144 @@
+/*========== Toolbar ==========*/
+.toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+/*========== Toolbar Space ==========*/
 .example-spacer {
     flex: 1 1 auto;
 }
 
-.example-container {
+
+
+/*============================== Background Themes ==============================*/
+/*---------- Primary Theme ----------*/
+.primary-container {
     width: auto;
     height: 100vh;
-    margin: 10px;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1007%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(212%2c 226%2c 241%2c 1)'%3e%3c/rect%3e%3cpath d='M534.5817828651759-59.183747159751896L451.8454485726205 10.240280430091495 521.2694761624639 92.97661472264687 604.0058104550193 23.552587132803502z' fill='rgba(147%2c 180%2c 217%2c 0.2)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M870.845%2c521.803C925.239%2c524.965%2c988.424%2c518.953%2c1014.726%2c471.236C1040.561%2c424.367%2c1006.178%2c371.825%2c978.893%2c325.785C952.405%2c281.09%2c922.782%2c229.78%2c870.845%2c228.456C817.493%2c227.096%2c777.308%2c272.604%2c752.815%2c320.021C730.514%2c363.195%2c728.755%2c414.092%2c753.29%2c456.037C777.588%2c497.576%2c822.802%2c519.01%2c870.845%2c521.803' fill='rgba(147%2c 180%2c 217%2c 0.2)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1457.80497836731 434.80950795648795L1340.5966310917684 510.9254986633555 1416.7126217986358 628.1338459388971 1533.9209690741775 552.0178552320295z' fill='rgba(147%2c 180%2c 217%2c 0.2)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1054.0455017131421 398.8569253879173L1102.3069324679632 430.19826497867393 1125.1882264766878 342.1354490510639z' fill='rgba(147%2c 180%2c 217%2c 0.2)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M570.8923723458851 343.05685789752886L487.3316972339898 406.0243430574213 623.5632625297761 499.881613145318z' fill='rgba(147%2c 180%2c 217%2c 0.2)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1331.8120260820099 273.942276459173L1262.1518766561703 322.7188381999606 1310.928438396958 392.37898762580005 1380.5885878227975 343.60242588501245z' fill='rgba(147%2c 180%2c 217%2c 0.2)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M244.07395281439895 108.92579227714569L350.3134867504033 172.8988260538628 354.09685192770417 64.55742257491355z' fill='rgba(147%2c 180%2c 217%2c 0.2)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M278.69120259868737 429.05560555092256L134.9259925429958 416.47777946162637 122.3481664536996 560.2429895173179 266.1133765093912 572.8208156066141z' fill='rgba(147%2c 180%2c 217%2c 0.2)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M926.1506611688476 231.64245335596087L1045.6565091627003 289.9293499467611 1103.9434057535007 170.42350195290823 984.4375577596478 112.13660536210801z' fill='rgba(147%2c 180%2c 217%2c 0.2)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M117.26140187327144 498.6656428579697L43.175399943204695 388.8286280832932-66.66161483147178 462.91463001336 7.424387098594963 572.7516447880364z' fill='rgba(147%2c 180%2c 217%2c 0.2)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M727.7334528273298-29.345012551735387L586.4004942171468 8.525039571764417 624.2705463406467 149.85799818194735 765.6035049508296 111.98794605844756z' fill='rgba(147%2c 180%2c 217%2c 0.2)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M421.45%2c289.034C472.353%2c289.561%2c517.826%2c258.558%2c542.653%2c214.117C566.868%2c170.772%2c564.529%2c118.842%2c540.933%2c75.157C515.994%2c28.985%2c473.894%2c-8.426%2c421.45%2c-10.277C366.043%2c-12.232%2c312.251%2c17.125%2c286.408%2c66.174C261.994%2c112.511%2c277.376%2c166.858%2c304.518%2c211.651C330.479%2c254.494%2c371.358%2c288.515%2c421.45%2c289.034' fill='rgba(147%2c 180%2c 217%2c 0.2)' class='triangle-float3'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1007'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: multiply;
 }
 
-.side-bar {
-    // width: 250px;
+
+
+/*============================== SideBar Themes ==============================*/
+/*---------- Primary Theme ----------*/
+.primary-sidebar {
+    width: 280px;
 }
 
-p {
-    padding: 20px;
+.primary-link-text {
+    color: rgb(119, 119, 119) !important;
 }
 
+
+
+/*============================== SideBar Dropdoen Items ==============================*/
+.full-width {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submenu {
+    overflow-y: hidden;
+    transition: transform 300ms ease;
+    transform: scaleY(0);
+    transform-origin: top;
+    padding-left: 30px;
+}
+
+.submenu.expanded {
+    transform: scaleY(1);
+}
+
+.menu-button.rotated {
+    transform: rotate(180deg);
+}
+
+/*============================== Right Side Bar ==============================*/
 .right-side-bar {
     width: 200px;
 }
 
-/* Rules for sizing the icon. */
-.material-icons.md-18 {
-    font-size: 18px;
+
+
+/*============================== Router Lick Active Themes ==============================*/
+/*---------- Primary Theme ----------*/
+.primary-active {
+    background-color: #b1bcff46;
+    border-left: 3px solid #3f51b5;
 }
 
-.material-icons.md-24 {
-    font-size: 24px;
+::ng-deep .primary-active .mdc-list-item__primary-text,
+::ng-deep .primary-active .mat-icon {
+    color: #3f51b5 !important;
 }
 
-.material-icons.md-36 {
-    font-size: 36px;
+::ng-deep .primary-active.mdc-list-item--with-leading-icon .mdc-list-item__start {
+    margin-left: 13px !important;
 }
 
-.material-icons.md-48 {
-    font-size: 48px;
+/*============================== Custom SorollBar For Side Bar ==============================*/
+::ng-deep .mat-drawer ::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* Track */
+::ng-deep .mat-drawer ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::ng-deep .mat-drawer ::-webkit-scrollbar-thumb {
+    background: #8495f7;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::ng-deep .mat-drawer ::-webkit-scrollbar-thumb:hover {
+    background: #8495f7;
 }
 
 
-/* Rules for using icons as black on a light background. */
-.material-icons.md-dark {
-    color: rgba(0, 0, 0, 0.54);
+/*============================== Material Slide Toggle Css ==============================*/
+::ng-deep .mdc-switch__icons {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
-.material-icons.md-dark.md-inactive {
-    color: rgba(0, 0, 0, 0.26);
+::ng-deep .mat-mdc-slide-toggle .mdc-switch.mdc-switch--unselected:enabled .mdc-switch__icon {
+    fill: transparent !important;
+    background-image: url("../assets/sun-svgrepo-com.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    width: 15px !important;
+    height: 15px !important;
+}
+
+::ng-deep .mat-mdc-slide-toggle .mdc-switch.mdc-switch--selected:enabled .mdc-switch__icon {
+    fill: transparent !important;
+    background-image: url("../assets/moon-alt-svgrepo-com.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
 }
 
 
-/* Rules for using icons as white on a dark background. */
-.material-icons.md-light {
-    color: rgba(255, 255, 255, 1);
+
+/*============================== Remove Extra Space From List Icons ==============================*/
+::ng-deep .mdc-list-item--with-leading-icon .mdc-list-item__start {
+    margin-right: 10px !important;
 }
 
-.material-icons.md-light.md-inactive {
-    color: rgba(255, 255, 255, 0.3);
+/*============================== Router Outlet Container ==============================*/
+.container {
+    padding: 10px;
 }
-
-// .mdc-list-item--with-leading-icon .mdc-list-item__start {
-//     margin-right: 0 !important;
-// }
-
-// .mdc-list-item--with-leading-icon.mdc-list-item {
-//     padding-left: 0;
-// }
-
-// .mdc-list-item__primary-text {
-//     margin: 0 10px;
-// }
-
-// @media screen and (max-width: 768px) {
-//     .side-bar-text {
-//         display: none !important;
-//     }
-// }

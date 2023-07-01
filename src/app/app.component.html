@@ -1,139 +1,78 @@
-<div ng-app="BlankApp" ng-controller="BlankAppCtrl as vm" ng-cloak re (window:resize)="windowSize()">
-  <section layout=" row" flex="">
+<div (window:resize)="windowSize()">
 
-    <mat-drawer-container class="example-container">
-      <!--============== Left Side Bar ==============-->
-      <mat-drawer [mode]='$any(sideBarMode)' #leftSideBar [opened]='$any(!toggleButton)' class="side-bar">
-        <mat-toolbar color="primary">
-          <span class="side-bar-text">Sidenav Left</span>
-          <span class="example-spacer"></span>
-        </mat-toolbar>
-        <mat-list class="links-list">
-          <mat-list-item>
-            <mat-icon matListItemIcon>home</mat-icon>
-            <div matListItemTitle class="side-bar-text">Home</div>
+  <mat-drawer-container class="primary-container">
+    <!--============== Left Side Bar ==============-->
+    <mat-drawer [mode]='$any(sideBarMode)' #leftSideBar [opened]='$any(opensidebar)' class="primary-sidebar">
+      <mat-toolbar [color]="theme" class="toolbar">
+        <span class="side-bar-text">Sidenav Left</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon favorite-icon" (click)="leftSideBar.toggle();closeSideBar()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-toolbar>
+
+      <!--===== SideBar Links =====-->
+      <mat-list class="links-list">
+
+        <!-- Loop Of Links-->
+        <ng-container *ngFor="let links of sidebarItems">
+          <mat-list-item [routerLink]="links.link" routerLinkActive="primary-active">
+            <mat-icon matListItemIcon>{{links.logo}}</mat-icon>
+            <div matListItemTitle class="primary-link-text">{{links.text}}</div>
           </mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item>
-            <mat-icon matListItemIcon>business</mat-icon>
-            <div matListItemTitle class="side-bar-text">Company</div>
+        </ng-container>
+
+        <!-- Dropdown Link -->
+        <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent" (click)="opeDropdown()">
+          <mat-icon matListItemIcon>home</mat-icon>
+          <span class="full-width primary-link-text" *ngIf="isExpanded || isShowing">Parent Menu <mat-icon class="menu-button" *ngIf="isExpanded || isShowing">expand_more</mat-icon></span>
+        </mat-list-item>
+        <mat-list class="submenu" *ngIf="isExpanded">
+          <mat-list-item *ngIf="dropdoenitems">
+            <div matListItemTitle>Submenu Item 1</div>
           </mat-list-item>
-          <mat-list-item>
-            <mat-icon matListItemIcon>store</mat-icon>
-            <div matListItemTitle class="side-bar-text">Branch Office</div>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon matListItemIcon>business_center</mat-icon>
-            <div matListItemTitle class="side-bar-text">Position</div>
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item>
-            <mat-icon matListItemIcon>playlist_add_check</mat-icon>
-            <div matListItemTitle class="side-bar-text">Risk Control</div>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon matListItemIcon>whatshot</mat-icon>
-            <div matListItemTitle class="side-bar-text">Fire</div>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon matListItemIcon>format_color_fill</mat-icon>
-            <div matListItemTitle class="side-bar-text">Hygiene</div>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon matListItemIcon>school</mat-icon>
-            <div matListItemTitle class="side-bar-text">Eduction</div>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon matListItemIcon>schedule</mat-icon>
-            <div matListItemTitle class="side-bar-text">Agenda</div>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon matListItemIcon>security</mat-icon>
-            <div matListItemTitle class="side-bar-text">Personal Protection Equipment
-            </div>
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item>
-            <mat-icon matListItemIcon>account_circle</mat-icon>
-            <div matListItemTitle class="side-bar-text">Profile</div>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon matListItemIcon>settings</mat-icon>
-            <div matListItemTitle class="side-bar-text">Settings</div>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon matListItemIcon>help</mat-icon>
-            <div matListItemTitle class="side-bar-text">Help</div>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon matListItemIcon>exit_to_app</mat-icon>
-            <div matListItemTitle class="side-bar-text">Log out</div>
+          <mat-list-item matListItemTitle *ngIf="dropdoenitems">
+            <div matListItemTitle>Submenu Item 2</div>
           </mat-list-item>
         </mat-list>
-      </mat-drawer>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </mat-drawer>
 
-      <!--============== Rigth Side Bar ==============-->
-      <mat-drawer mode="over" #rightsidebar class="right-side-bar" position="end">
-        <mat-toolbar color="primary">
-          <span>Sidenav Left</span>
-        </mat-toolbar>
-      </mat-drawer>
+    <!--============== Rigth Side Bar ==============-->
+    <mat-drawer mode="over" #rightsidebar class="right-side-bar" position="end">
+      <mat-toolbar [color]="theme">
+        <span>Sidenav Left</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon favorite-icon" (click)="rightsidebar.toggle()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-toolbar>
+    </mat-drawer>
 
+    <!--============== Content Section ==============-->
+    <mat-drawer-content>
 
-      <mat-drawer-content>
-        <mat-toolbar color="primary">
-          <button mat-icon-button class="example-icon favorite-icon" *ngIf="toggleButton"
-            (click)="leftSideBar.toggle()">
-            <mat-icon>dehaze</mat-icon>
-          </button>
-          <span>Home / Company module</span>
-          <span class="example-spacer"></span>
-          <button mat-icon-button class="example-icon favorite-icon">
-            <mat-icon>refresh</mat-icon>
-          </button>
-          <button mat-icon-button class="example-icon">
-            <mat-icon>notifications_none</mat-icon>
-          </button>
-          <button mat-icon-button class="example-icon">
-            <mat-icon>account_circle</mat-icon>
-          </button>
-          <button mat-icon-button class="example-icon" (click)="rightsidebar.toggle()">
-            <mat-icon>filter_list</mat-icon>
-          </button>
-        </mat-toolbar>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae iure cupiditate harum obcaecati
-          numquam dolorum culpa vitae inventore porro quidem officia quam aspernatur consequuntur cum ullam
-          aperiam est, distinctio voluptatum! Iste commodi amet ab nam consequuntur asperiores reiciendis,
-          ducimus ipsam officia illum atque at voluptatum mollitia. Fugit velit quis, quisquam expedita harum
-          eaque ipsa nulla minus ab! Dolorum velit quas sunt sequi, minus quaerat fugiat at. Perferendis
-          architecto, quae sit illum, repellendus consectetur harum dolorem blanditiis eius, quis iste ex?
-          Ullam itaque expedita nemo magnam, ex et! Culpa eaque cum ipsum placeat facere autem cupiditate sunt
-          veniam magni tempore, error ducimus doloribus totam consequatur quo similique! Facere, atque
-          debitis. Veritatis ex incidunt veniam deserunt officiis sequi tempora nihil cum asperiores, labore
-          dignissimos. Totam nobis blanditiis voluptatem voluptates fugit facere nesciunt perferendis nostrum?
-          Labore saepe ipsam excepturi est neque magni, quia porro ex optio perspiciatis assumenda. Assumenda
-          id nihil tempora dolorum modi ratione iusto vitae, qui nulla a totam, deleniti at laborum architecto
-          vero illum iure obcaecati quaerat distinctio ut fuga. Aut veritatis suscipit impedit quasi
-          consectetur, distinctio atque tempora qui eos dolores iusto, omnis expedita cum maxime sunt illum
-          fuga? Sed asperiores perspiciatis adipisci. Fugit tempore qui repudiandae impedit rem debitis, ut
-          soluta quia vero, aliquid, ullam facilis doloribus. Repellendus molestias vero voluptatibus fuga rem
-          eaque. Omnis cumque reprehenderit reiciendis adipisci veritatis est distinctio ipsam odit
-          perspiciatis, necessitatibus earum doloremque eveniet veniam architecto enim asperiores inventore
-          officia totam esse, sapiente quod in! Repellendus, eius reiciendis minima velit fugit saepe earum
-          voluptatibus delectus deleniti dolores aut aliquid unde nobis hic odit laborum? Debitis, commodi,
-          recusandae maxime fuga voluptatem error quia, magni assumenda animi distinctio sed. Nulla dolores
-          laudantium sit expedita. A quibusdam voluptatibus sunt voluptas, quod harum odit numquam, expedita
-          in ullam dolor facilis nisi libero. Vitae earum dolore rem beatae accusantium. Aperiam aspernatur
-          voluptatibus, similique beatae perspiciatis ratione enim deleniti nisi odit quibusdam quidem
-          consectetur, numquam, accusamus quas pariatur minima ad sequi dolorem quod illum saepe! Vitae quis
-          doloremque assumenda! Cupiditate culpa, omnis saepe autem rerum atque nam, a animi sed commodi ullam
-          nostrum harum possimus magni quaerat voluptates perferendis ex velit quas enim odio! Alias in
-          deleniti ipsa dolore enim! Delectus, recusandae porro, maiores sint distinctio nam similique animi
-          voluptatum ipsam exercitationem earum molestias dolores repellendus obcaecati amet quod molestiae
-          aliquam? Sint enim in eos aliquid aspernatur vero sunt veritatis deleniti tempora illo, dolores
-          reiciendis non expedita praesentium dolorum!</p>
-      </mat-drawer-content>
-    </mat-drawer-container>
+      <!--== Toolbar ==-->
+      <mat-toolbar [color]="theme" class="toolbar">
+        <button mat-icon-button class="example-icon favorite-icon" *ngIf="toggleButton || sidebartogglebtn" (click)="leftSideBar.toggle(); openSideBar()">
+          <mat-icon>dehaze</mat-icon>
+        </button>
+        <span>Home</span>
+        <span class="example-spacer"></span>
+        <mat-slide-toggle color="primary" (change)="changeTheme($event)"></mat-slide-toggle>
+        <button mat-icon-button class=" example-icon">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" (click)="rightsidebar.toggle()">
+          <mat-icon>filter_list</mat-icon>
+        </button>
+      </mat-toolbar>
 
-  </section>
+      <!--== Components Loading Section ==-->
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
 </div>
